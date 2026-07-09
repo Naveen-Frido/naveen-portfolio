@@ -1,26 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=DM+Mono:wght@400&family=DM+Sans:wght@400;500&display=swap');
 @import "tailwindcss";
 
+/* ============================================
+   NAVEEN PORTFOLIO — DESIGN SYSTEM
+   ============================================ */
+
+/* --- CSS Custom Properties --- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colors */
+  --color-forest: #232E26;
+  --color-forest-light: #2E3D30;
+  --color-ivory: #EDE6D0;
+  --color-warm-white: #F0E8D2;
+  --color-dark-text: #1E2820;
+  --color-terracotta: #C07030;
+  --color-terracotta-hover: #D47E3A;
+  --color-forest-border: rgba(240, 232, 210, 0.1);
+  --color-ivory-border: rgba(30, 40, 32, 0.1);
+
+  /* Typography */
+  --font-display: 'Bricolage Grotesque', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+
+  /* Spacing — editorial rhythm */
+  --section-padding-y: clamp(80px, 12vw, 200px);
+  --section-padding-x: clamp(20px, 5vw, 120px);
+  --content-max-width: 1400px;
+
+  /* Easing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Transitions */
+  --transition-fast: 200ms var(--ease-out-quart);
+  --transition-medium: 400ms var(--ease-out-expo);
+  --transition-slow: 800ms var(--ease-out-expo);
 }
 
+/* --- Tailwind v4 Theme --- */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-forest: var(--color-forest);
+  --color-forest-light: var(--color-forest-light);
+  --color-ivory: var(--color-ivory);
+  --color-warm-white: var(--color-warm-white);
+  --color-dark-text: var(--color-dark-text);
+  --color-terracotta: var(--color-terracotta);
+  --color-terracotta-hover: var(--color-terracotta-hover);
+  --color-forest-border: var(--color-forest-border);
+  --color-ivory-border: var(--color-ivory-border);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* --- Base Styles --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--color-warm-white);
+  background-color: var(--color-forest);
+  overflow-x: hidden;
+}
+
+/* --- Selection --- */
+::selection {
+  background-color: var(--color-terracotta);
+  color: var(--color-warm-white);
+}
+
+::-moz-selection {
+  background-color: var(--color-terracotta);
+  color: var(--color-warm-white);
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-forest);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-forest-light);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-terracotta);
+}
+
+/* --- Typography Scale --- */
+.heading-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+}
+
+.heading-1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.heading-2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.heading-3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.body-large {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1.125rem, 1.5vw, 1.375rem);
+  line-height: 1.7;
+}
+
+.body-base {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.label-mono {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* --- Section Utilities --- */
+.section-dark {
+  background-color: var(--color-forest);
+  color: var(--color-warm-white);
+}
+
+.section-dark-alt {
+  background-color: var(--color-forest-light);
+  color: var(--color-warm-white);
+}
+
+.section-light {
+  background-color: var(--color-ivory);
+  color: var(--color-dark-text);
+}
+
+.section-padding {
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+  padding-left: var(--section-padding-x);
+  padding-right: var(--section-padding-x);
+}
+
+.content-container {
+  max-width: var(--content-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+/* --- Interactive States --- */
+.link-underline {
+  position: relative;
+  text-decoration: none;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-terracotta);
+  transition: width var(--transition-medium);
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* --- Focus States --- */
+*:focus-visible {
+  outline: 2px solid var(--color-terracotta);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* --- Skip Link --- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 9999;
+  padding: 12px 24px;
+  background: var(--color-terracotta);
+  color: var(--color-warm-white);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+/* --- Divider --- */
+.divider-dark {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-forest-border);
+}
+
+.divider-light {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-ivory-border);
+}
+
+/* --- Accent dash (for lists) --- */
+.accent-dash::before {
+  content: '—';
+  color: var(--color-terracotta);
+  margin-right: 12px;
+  font-weight: 400;
+}
+
+/* --- Experience Timeline Layout Custom Styles --- */
+.experience-item {
+  position: relative;
+  padding-left: 2.5rem; /* 40px padding on mobile */
+  width: 100%;
+}
+
+.timeline-line-custom {
+  position: absolute;
+  left: 0.5rem; /* 8px alignment on mobile */
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: var(--color-forest-border);
+}
+
+.timeline-dot-custom {
+  position: absolute;
+  left: 0.5rem; /* 8px alignment on mobile */
+  top: 2rem; /* 32px vertical offset */
+  width: 0.5rem; /* 8px size */
+  height: 0.5rem;
+  border-radius: 9999px;
+  transform: translateX(-3.5px);
+}
+
+@media (min-width: 768px) {
+  .experience-item {
+    padding-left: 6.5rem; /* 104px padding on desktop */
+  }
+  .timeline-line-custom {
+    left: 2rem; /* 32px alignment on desktop */
+  }
+  .timeline-dot-custom {
+    left: 2rem; /* 32px alignment on desktop */
+  }
 }

@@ -27,15 +27,15 @@ export function Contact() {
     setError("");
 
     try {
+      emailjs.init("X3YpS-gNehcIZImi5");
       await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "",
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "",
+        "service_1g1xd04",
+        "template_f9r5957",
         {
           from_name: formState.name,
           from_email: formState.email,
           message: formState.message,
-        },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ""
+        }
       );
 
       setIsSubmitted(true);

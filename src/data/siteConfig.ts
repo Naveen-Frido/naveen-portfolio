@@ -16,7 +16,6 @@ export const siteConfig: SiteConfig = {
   ],
   socialLinks: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/naveen-rajendran-94ab74192/", icon: "linkedin" },
-    { label: "GitHub", href: "https://github.com/Naveen-Frido", icon: "github" },
     { label: "Email", href: "mailto:evinaveen@gmail.com", icon: "mail" },
   ],
   email: "evinaveen@gmail.com",

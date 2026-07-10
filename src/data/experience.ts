@@ -5,8 +5,8 @@ export const experiences: Experience[] = [
     id: "exp-reimaginehome",
     company: "STYLDOD (reimaginehome.ai)",
     role: "Product Designer",
-    duration: "2 Years",
-    startDate: "2024",
+    duration: "3 Years",
+    startDate: "2023",
     endDate: "2026",
     location: "Bangalore, India",
     description:
